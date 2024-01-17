@@ -42,6 +42,7 @@ return new class extends Migration
             'password' => Hash::make("blabla")
         ]);
 
+    //valami
     }
 
     /**
