@@ -23,7 +23,10 @@ class UserTest extends TestCase
 
     public function testAPostResponse() : void
 {
-    $response = $this->post('/users', ['name' => 'Amy']);
+    $response = $this->post('/users', ['name' => 'Robi',
+    'email' => 'robimail@mail.hu',
+    'password' => 'blabla',
+    'member' => false,]);
     $response->assertStatus(200);
 }
 
@@ -31,17 +34,10 @@ public function testUserId() : void
 {
     //a make nem rögzíti az adatbázisban a felh-t
     $user = User::factory()->make();
-    $this->withoutMiddleware()->get('/api/users/' . $user->id)
+    $this->get('/api/users/' . $user->id)
     ->assertStatus(200);
 }
 
-public function testUserIdAuth() : void {
-    $this->withoutExceptionHandling(); 
-    // create rögzíti az adatbázisban a felh-t
-    $user = User::factory()->create();
-                $response = $this->actingAs($user)->get('/api/users/' . $user->id);
-                $response->assertStatus(200);
-        }
     
 
 }

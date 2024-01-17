@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\WinningController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +19,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('winnings', [WinningController::class, 'index']);
-Route::get('winnings/{user_id}/{item_id}', [WinningController::class, 'show']);
-Route::put('winnings/{user_id}/{item_id}', [WinningController::class, 'update']);
-Route::post('winnings/{user_id}/{item_id}', [WinningController::class, 'store']);
-Route::delete('winnings/{user_id}/{item_id}', [WinningController::class, 'destroy']);
+Route::get('users', [UserController::class, 'index']);
+Route::get('users/{user_id}', [UserController::class, 'show']);
+Route::put('users/{user_id}', [UserController::class, 'update']);
+Route::post('users', [UserController::class, 'store']);
+Route::delete('users/{user_id}', [UserController::class, 'destroy']);
