@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('baskets', function (Blueprint $table) {
-            $table->id();
+            //a primary...nem hozza létre ..
+            $table->primary(['user_id', 'item_id']);
+            $table->foreignID('user_id')->references('id')->on('users');
+            $table->foreignID('item_id')->references('item_id')->on('products');
             $table->timestamps();
         });
     }
